@@ -1,0 +1,84 @@
+
+<div class="dialog-body">
+
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-between" >
+      <h2>{{title}}</h2>
+      <div>
+        <button mat-button  [class]="nombre1 !== '' && apPaterno !== '' && apMaterno !== '' && numeroDoc !== '' && fechaNac !== null ? 'bg-green' : 'bg-grey'" [disabled]="nombre1 !== '' && apPaterno !== '' && apMaterno !== '' && numeroDoc !== '' && fechaNac !== null ? false : true" (click)="saveChanges()" d>{{button}}</button>
+        <button mat-button class="bg-red" (click)="dialogRef.close()">Cerrar</button>
+      </div>
+    </div>
+    <hr>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="w-100 " appearance="outline">
+            <mat-label>Primer Nombre</mat-label>
+            <input matInput [(ngModel)]="nombre1" [formControl]="nombre1Control" [errorStateMatcher]="matcher" [maxLength]="30">
+            <mat-error *ngIf="nombre1Control.hasError('required')">
+              El Primer Nombre es <strong>requerido.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Segundo Nombre (Opcional)</mat-label>
+            <input matInput [(ngModel)]="nombre2" [maxLength]="30">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput [(ngModel)]="apPaterno" [formControl]="apPaternoControl" [errorStateMatcher]="matcher" [maxLength]="60">
+            <mat-error *ngIf="apPaternoControl.hasError('required')">
+              El Apellido Paterno es <strong>requerido.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput [(ngModel)]="apMaterno" [formControl]="apMaternoControl" [errorStateMatcher]="matcher" [maxLength]="60">
+            <mat-error *ngIf="apMaternoControl.hasError('required')">
+              El Apellido Materno es <strong>requerido.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-5">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select matSelect [(ngModel)]="tipoDoc">
+              <mat-option value="DNI">DNI</mat-option>
+              <mat-option value="C.EXT.">Carne de Extranjería</mat-option>
+              <mat-option value="PASAPORTE">Pasaporte</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-7">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Número de Documento</mat-label>
+            <input matInput [(ngModel)]="numeroDoc" [formControl]="numeroDocControl" [errorStateMatcher]="matcher" [maxLength]="30">
+            <mat-error *ngIf="numeroDocControl.hasError('required')">
+              El Número de Documento es <strong>requerido.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Fecha de Nacimiento (DD/MM/YYYY)</mat-label>
+            <input matInput [matDatepicker]="picker1" [formControl]="fechaNacControl" [errorStateMatcher]="matcher" [(ngModel)]="fechaNac" >
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 color="primary"></mat-datepicker>
+            <mat-error *ngIf="fechaNacControl.hasError('required')">
+              La Fecha de Nacimiento es <strong>requerida.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

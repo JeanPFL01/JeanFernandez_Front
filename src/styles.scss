@@ -1,0 +1,150 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bg-cyan{
+  background-color: rgb(154, 206, 240) !important;
+}
+.bg-cyan:hover{
+  transition: .3s ease all;
+  background-color: rgb(187, 228, 255) !important;
+}
+.bg-blue{
+  background-color: rgb(154, 158, 240) !important;
+}
+.bg-blue:hover{
+  transition: .3s ease all;
+  background-color: rgb(201, 230, 248) !important;
+}
+.bg-red{
+  background-color: rgb(253, 101, 101) !important;
+}
+.bg-red:hover{
+  transition: .3s ease all;
+  background-color: rgb(249, 151, 151) !important;
+}
+.bg-green{
+  background-color: rgb(91, 199, 91) !important;
+}
+.bg-green:hover{
+  transition: .3s ease all;
+  background-color: rgb(121, 199, 121) !important;
+}
+.bg-orange{
+  background-color: rgb(250, 189, 74) !important;
+}
+.bg-orange:hover{
+  transition: .3s ease all;
+  background-color: rgb(253, 213, 137) !important;
+}
+.bg-grey{
+  background-color: rgb(149, 149, 149) !important;
+}
+.bg-grey:hover{
+  transition: .3s ease all;
+  background-color: rgb(180, 180, 180) !important;
+}
+
+
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #FF3D00 #FF3D00;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loader::before {
+  width: 32px;
+  height: 32px;
+  border-color: #FFF #FFF transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  opacity: 1;
+  transition: .3s ease all;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.loader-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+}
+
+.show-form {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hide-loader {
+  opacity: 1;
+  animation: fadeOut 1.5s forwards;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
